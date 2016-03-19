@@ -7,3 +7,6 @@ Playing around with couchdb
     docker-compose up -d
 then browse to [http://localhost:5984/_utils/](Futon)
 
+## Extras
+### Checking dependency versions
+    ./gradlew dependencyUpdates
