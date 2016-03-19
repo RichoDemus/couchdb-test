@@ -22,8 +22,8 @@ public class Main
 		System.out.println("Doing stuff");
 
 		final HttpClient httpClient = new StdHttpClient.Builder()
-		        .url("http://localhost:5984")
-		        .build();
+				.url("http://localhost:5984")
+				.build();
 
 		final CouchDbInstance dbInstance = new StdCouchDbInstance(httpClient);
 		final CouchDbConnector db = new StdCouchDbConnector("java-db", dbInstance);
@@ -38,7 +38,6 @@ public class Main
 
 
 		final User richo = new User(NAME, 29, ImmutableMap.of("key1", "val1", "key 2", "value 2"), "pens", "islands", "kittens");
-		//db.create(richo);
 		repo.add(richo);
 
 		repo.getAll().forEach(System.out::println);
@@ -47,8 +46,6 @@ public class Main
 		System.out.println("Using view:");
 		repo.findByName(NAME).forEach(System.out::println);
 
-
-		// repo.add(richo);
 
 		System.out.println("Printing all ids:");
 		db.getAllDocIds().forEach(System.out::println);
@@ -62,28 +59,7 @@ public class Main
 				.findAny()
 				.ifPresent(System.out::println);
 
-
-		//db.getAsStream("test-id").toString();
-
-//		Sofa sofa = db.get(Sofa.class, "ektorp");
-//
-//		final Sofa sofa = new Sofa();
-//		sofa.setColor("white");
-//		sofa.setId("manual-id");
-//		db.create(sofa);
-
-//		final SofaRepository repo = new SofaRepository(db);
-//
-//		repo.add(sofa);
-
-
-
 		System.out.println("Done");
-//		db.
-//
-//		Sofa sofa = db.get(Sofa.class, "ektorp");
-//		sofa.setColor("blue");
-//		db.update(sofa);
 	}
 
 	private static byte[] toByteArray(InputStream in)

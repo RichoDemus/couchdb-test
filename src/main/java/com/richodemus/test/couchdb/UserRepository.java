@@ -8,13 +8,15 @@ import java.util.List;
 
 public class UserRepository extends CouchDbRepositorySupport<User>
 {
-    public UserRepository(CouchDbConnector db) {
-        super(User.class, db);
-        initStandardDesignDocument();
-    }
+	public UserRepository(CouchDbConnector db)
+	{
+		super(User.class, db);
+		initStandardDesignDocument();
+	}
 
-    @GenerateView
-    public List<User> findByName(String name) {
-            return queryView("by_name", name);
-    }
+	@GenerateView
+	public List<User> findByName(String name)
+	{
+		return queryView("by_name", name);
+	}
 }
