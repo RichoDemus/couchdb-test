@@ -6,11 +6,8 @@ repositories {
 }
 
 dependencies {
-    compile 'org.slf4j:slf4j-api:1.7.14'
     compile 'org.ektorp:org.ektorp:1.4.2'
-    compile 'com.google.guava:guava:18.+'
-    // compile 'com.fasterxml.jackson.core:jackson-annotations:2.7.3'
-
+    compile 'com.google.guava:guava:19.0'
 
     testCompile 'junit:junit:4.12'
 }
@@ -33,6 +30,5 @@ buildscript {
 
   dependencies {
     classpath 'com.github.ben-manes:gradle-versions-plugin:0.12.0'
-    // classpath 'org.codehaus.groovy:groovy-backports-compat23:2.3.5' // uncomment if you're using Gradle 1.x
   }
 }
