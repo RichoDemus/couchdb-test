@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.common.base.MoreObjects;
 
 import java.util.Arrays;
 import java.util.List;
@@ -72,14 +73,13 @@ public class User
 	@Override
 	public String toString()
 	{
-		final StringBuilder sb = new StringBuilder("User{");
-		sb.append("id='").append(id).append('\'');
-		sb.append(", revision='").append(revision).append('\'');
-		sb.append(", name='").append(name).append('\'');
-		sb.append(", age=").append(age);
-		sb.append(", things=").append(things);
-		sb.append(", dictionary=").append(dictionary);
-		sb.append('}');
-		return sb.toString();
+		return MoreObjects.toStringHelper(this)
+				.add("id", id)
+				.add("revision", revision)
+				.add("name", name)
+				.add("age", age)
+				.add("things", things)
+				.add("dictionary", dictionary)
+				.toString();
 	}
 }
