@@ -26,7 +26,7 @@ public class Main
 
 		db.createDatabaseIfNotExists();
 
-//		final UserRepository repo = new UserRepository(db);
+		final UserRepository repo = new UserRepository(db);
 
 		db.getAllDocIds().forEach(id ->
 				db.delete(id, db.getCurrentRevision(id)));
@@ -34,7 +34,14 @@ public class Main
 
 
 		final User richo = new User("richo", 29);
-		db.create(richo);
+		//db.create(richo);
+		repo.add(richo);
+
+		repo.getAll().forEach(System.out::println);
+
+
+		
+
 
 		// repo.add(richo);
 

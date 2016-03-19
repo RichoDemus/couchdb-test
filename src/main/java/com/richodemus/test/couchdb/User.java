@@ -1,5 +1,7 @@
 package com.richodemus.test.couchdb;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -21,7 +23,8 @@ public class User
 		this.age = age;
 	}
 
-	public User(String id, String name, int age)
+	@JsonCreator
+	public User(@JsonProperty("_id") String id, @JsonProperty("_rev") String revision, @JsonProperty("name") String name, @JsonProperty("age") int age)
 	{
 		this.id = id;
 		this.name = name;
@@ -36,5 +39,18 @@ public class User
 	public int getAge()
 	{
 		return age;
+	}
+
+	@JsonIgnore
+	@Override
+	public String toString()
+	{
+		final StringBuilder sb = new StringBuilder("User{");
+		sb.append("id='").append(id).append('\'');
+		sb.append(", revision='").append(revision).append('\'');
+		sb.append(", name='").append(name).append('\'');
+		sb.append(", age=").append(age);
+		sb.append('}');
+		return sb.toString();
 	}
 }
