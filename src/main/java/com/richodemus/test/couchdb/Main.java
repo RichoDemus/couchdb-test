@@ -36,7 +36,7 @@ public class Main
 		final UserRepository repo = new UserRepository(db);
 
 
-		final User richo = new User(NAME, 29);
+		final User richo = new User(NAME, 29, "pens", "islands", "kittens");
 		//db.create(richo);
 		repo.add(richo);
 
