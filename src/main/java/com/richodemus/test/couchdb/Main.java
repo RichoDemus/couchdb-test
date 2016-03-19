@@ -1,5 +1,6 @@
 package com.richodemus.test.couchdb;
 
+import com.google.common.collect.ImmutableMap;
 import com.google.common.io.ByteStreams;
 import org.ektorp.CouchDbConnector;
 import org.ektorp.CouchDbInstance;
@@ -36,7 +37,7 @@ public class Main
 		final UserRepository repo = new UserRepository(db);
 
 
-		final User richo = new User(NAME, 29, "pens", "islands", "kittens");
+		final User richo = new User(NAME, 29, ImmutableMap.of("key1", "val1", "key 2", "value 2"), "pens", "islands", "kittens");
 		//db.create(richo);
 		repo.add(richo);
 

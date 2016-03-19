@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 @JsonIgnoreProperties({"_id", "_rev"})
 public class User
@@ -19,24 +20,32 @@ public class User
 	private final String name;
 	private final int age;
 	private final List<String> things;
+	private final Map<String, String> dictionary;
 
-	public User(String name, int age, String...things)
+	public User(String name, int age, Map<String, String> dictionary, String... things)
 	{
 		this.id = null;
 		this.revision = null;
 		this.name = name;
 		this.age = age;
+		this.dictionary = dictionary;
 		this.things = Arrays.asList(things);
 	}
 
 	@JsonCreator
-	public User(@JsonProperty("_id") String id, @JsonProperty("_rev") String revision, @JsonProperty("name") String name, @JsonProperty("age") int age, @JsonProperty("things") List<String> things)
+	public User(@JsonProperty("_id") String id,
+				@JsonProperty("_rev") String revision,
+				@JsonProperty("name") String name,
+				@JsonProperty("age") int age,
+				@JsonProperty("things") List<String> things,
+				@JsonProperty("dictionary") Map<String, String> dictionary)
 	{
 		this.id = id;
 		this.revision = revision;
 		this.name = name;
 		this.age = age;
 		this.things = things;
+		this.dictionary = dictionary;
 	}
 
 	public String getName()
@@ -54,6 +63,11 @@ public class User
 		return things;
 	}
 
+	public Map<String, String> getDictionary()
+	{
+		return dictionary;
+	}
+
 	@JsonIgnore
 	@Override
 	public String toString()
@@ -64,6 +78,7 @@ public class User
 		sb.append(", name='").append(name).append('\'');
 		sb.append(", age=").append(age);
 		sb.append(", things=").append(things);
+		sb.append(", dictionary=").append(dictionary);
 		sb.append('}');
 		return sb.toString();
 	}
