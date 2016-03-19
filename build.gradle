@@ -1,0 +1,26 @@
+apply plugin: 'java'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'org.slf4j:slf4j-api:1.7.14'
+    compile 'org.ektorp:org.ektorp:1.4.2'
+    compile 'com.google.guava:guava:18.+'
+    // compile 'com.fasterxml.jackson.core:jackson-annotations:2.7.3'
+
+
+    testCompile 'junit:junit:4.12'
+}
+
+task fatJar(type: Jar) {
+	manifest {
+        attributes 'Implementation-Title': 'Gradle Jar File Example',
+        	'Implementation-Version': 1,
+        	'Main-Class': 'com.richodemus.test.couchdb.Main'
+    }
+    baseName = project.name + '-all'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}

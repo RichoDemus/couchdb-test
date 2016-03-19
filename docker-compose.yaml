@@ -1,5 +1,8 @@
 version: "2"
 services:
+  app:
+    image: couchdb-test:latest
+
   couchdb:
     image: couchdb:1.6.1
     ports:
