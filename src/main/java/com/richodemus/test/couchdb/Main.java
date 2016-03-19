@@ -13,6 +13,9 @@ import java.io.InputStream;
 
 public class Main
 {
+
+	public static final String NAME = "richo";
+
 	public static void main(String[] args) throws Exception
 	{
 		System.out.println("Doing stuff");
@@ -26,27 +29,30 @@ public class Main
 
 		db.createDatabaseIfNotExists();
 
-		final UserRepository repo = new UserRepository(db);
 
 		db.getAllDocIds().forEach(id ->
 				db.delete(id, db.getCurrentRevision(id)));
 
+		final UserRepository repo = new UserRepository(db);
 
 
-		final User richo = new User("richo", 29);
+		final User richo = new User(NAME, 29);
 		//db.create(richo);
 		repo.add(richo);
 
 		repo.getAll().forEach(System.out::println);
 
 
-		
+		System.out.println("Using view:");
+		repo.findByName(NAME).forEach(System.out::println);
 
 
 		// repo.add(richo);
 
+		System.out.println("Printing all ids:");
 		db.getAllDocIds().forEach(System.out::println);
 
+		System.out.println("All raw:");
 		db.getAllDocIds()
 				.stream()
 				.map(db::getAsStream)
